@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8c1f28">
+  <title>Mã QR Trung Thu dành tặng Trần Trang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #8c1f28;
+      --red-deep: #50131a;
+      --gold: #f1c76d;
+      --paper: #fff5dc;
+      --ink: #432720;
+      --jade: #164a48;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      display: grid;
+      place-items: center;
+      min-width: 320px;
+      min-height: 100svh;
+      margin: 0;
+      padding: 28px 18px;
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 50% 22%, rgba(241, 199, 109, 0.18), transparent 28%),
+        repeating-linear-gradient(135deg, transparent 0 32px, rgba(241, 199, 109, 0.025) 33px 34px),
+        var(--jade);
+      font-family: "Be Vietnam Pro", sans-serif;
+    }
+
+    .card {
+      position: relative;
+      width: min(620px, 100%);
+      overflow: hidden;
+      padding: clamp(26px, 6vw, 52px);
+      border: 1px solid rgba(241, 199, 109, 0.64);
+      border-radius: 8px;
+      background: var(--red);
+      box-shadow: 0 28px 70px rgba(4, 26, 27, 0.4);
+      text-align: center;
+    }
+
+    .card::before,
+    .card::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(241, 199, 109, 0.35);
+      transform: rotate(45deg);
+    }
+
+    .card::before { top: -64px; left: -64px; }
+    .card::after { right: -64px; bottom: -64px; }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.1rem, 8vw, 4rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 12px 0 28px;
+      color: rgba(255, 245, 220, 0.78);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .mooncake {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: min(390px, 88vw);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      border: 11px double #dca94e;
+      border-radius: 26%;
+      background:
+        radial-gradient(circle, #edc877 0 59%, transparent 60%),
+        repeating-conic-gradient(from 22.5deg, #dca94e 0 10deg, #f2cf7e 10deg 22.5deg);
+      box-shadow: inset 0 0 0 9px #b9752e, 0 18px 38px rgba(63, 15, 20, 0.35);
+      transform: rotate(2deg);
+    }
+
+    .mooncake::before {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      border: 2px solid rgba(117, 64, 25, 0.5);
+      border-radius: 50%;
+    }
+
+    .qr-shell {
+      position: relative;
+      z-index: 1;
+      width: 68%;
+      padding: 8px;
+      border: 2px solid #7d3b20;
+      border-radius: 4px;
+      background: white;
+      box-shadow: 0 7px 18px rgba(86, 42, 19, 0.25);
+      transform: rotate(-2deg);
+    }
+
+    .qr-shell img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+    }
+
+    .scan {
+      margin: 27px 0 0;
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 1.18rem;
+      font-style: italic;
+    }
+
+    .url {
+      margin: 9px 0 0;
+      color: rgba(255, 245, 220, 0.64);
+      font-size: 0.68rem;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    @media print {
+      body { padding: 0; background: white; }
+      .card { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <p class="eyebrow">Một món quà nhỏ dưới trăng</p>
+    <h1>Gửi Trần Trang</h1>
+    <p class="subtitle">Dùng camera điện thoại quét chiếc bánh này nhé.</p>
+    <div class="mooncake">
+      <div class="qr-shell">
+        <img src="ma-qr-trung-thu.png" alt="Mã QR mở trang Trung Thu dành tặng Trần Trang">
+      </div>
+    </div>
+    <p class="scan">Quét để mở một điều thật dịu dàng</p>
+    <p class="url">nguyendgiang.github.io/trung-thu-tran-trang</p>
+  </main>
+</body>
+</html>
