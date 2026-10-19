@@ -83,7 +83,7 @@
 
     .rose-button {
       position: relative;
-      width: min(470px, 78vw);
+      width: min(350px, 66vw);
       border: 0;
       padding: 0;
       background: transparent;
@@ -91,22 +91,33 @@
       filter: drop-shadow(0 25px 24px rgba(128,49,67,.12));
     }
 
-    .rose-button svg { display: block; width: 100%; overflow: visible; }
-
-    .draw {
-      fill: transparent;
-      stroke: var(--line-color);
-      stroke-width: var(--line-width, 4);
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-dasharray: 1;
-      stroke-dashoffset: 1;
-      animation: draw-line var(--duration, 3s) var(--delay, 0s) cubic-bezier(.55,.05,.3,.95) forwards,
-                 color-in 800ms calc(var(--delay, 0s) + var(--duration, 3s) - 150ms) forwards;
+    .rose-button .rose-art {
+      display: block;
+      width: 100%;
+      height: auto;
+      opacity: 0;
+      transform-origin: 50% 80%;
+      transform: translateY(18px) scale(.94) rotate(-1.5deg);
+      filter: saturate(.94) drop-shadow(0 22px 24px rgba(111,43,59,.18));
+      animation: rose-bloom-in 1.45s 250ms cubic-bezier(.18,.8,.2,1) forwards;
+      transition: transform 500ms cubic-bezier(.2,.8,.2,1), filter 500ms ease;
     }
 
-    @keyframes draw-line { to { stroke-dashoffset: 0; } }
-    @keyframes color-in { to { fill: var(--fill-color); stroke: var(--fill-color); } }
+    .rose-button:hover .rose-art,
+    .rose-button:focus-visible .rose-art {
+      transform: translateY(-7px) rotate(.8deg) scale(1.02);
+      filter: saturate(1.04) drop-shadow(0 28px 28px rgba(111,43,59,.22));
+    }
+
+    @keyframes rose-bloom-in {
+      to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+    }
+
+    .rose-button:focus-visible {
+      outline: 2px solid rgba(173,46,76,.55);
+      outline-offset: 10px;
+      border-radius: 45%;
+    }
 
     .rose-glow {
       position: absolute;
@@ -519,6 +530,16 @@
     button:focus-visible { outline: 3px solid var(--rose-deep); outline-offset: 5px; }
 
     @media (max-width: 680px) {
+      .intro-label {
+        width: 88vw;
+        font-size: .58rem;
+        line-height: 1.65;
+        letter-spacing: .13em;
+      }
+      .rose-button {
+        width: min(300px, 70vw);
+        transform: translateX(-3vw);
+      }
       .heart-copy { top: 18px; height: 140px; }
       .gift-stage { min-height: 560px; padding-top: 82px; }
       .gift-title { top: 10px; }
@@ -542,7 +563,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; }
-      .draw { stroke-dashoffset: 0; fill: var(--fill-color); stroke: var(--fill-color); }
       .tap-hint { opacity: 1; transform: none; }
     }
   </style>
@@ -556,17 +576,7 @@
       <span class="sparkle" style="bottom:25%;left:18%;--size:1.1rem;--delay:4.1s" aria-hidden="true">✧</span>
       <button class="rose-button" id="rose-button" type="button" aria-label="Chạm vào bông hồng để mở món quà">
         <span class="rose-glow" aria-hidden="true"></span>
-        <svg viewBox="0 0 420 560" role="img" aria-label="Bông hồng đang nở">
-          <path class="draw" pathLength="1" style="--line-color:#4f7951;--fill-color:#5d8b59;--duration:2.7s" d="M219 516 C210 430 211 350 230 279 C244 229 270 193 296 163"/>
-          <path class="draw" pathLength="1" style="--line-color:#4f7951;--fill-color:#78a66e;--duration:2.2s;--delay:.5s" d="M218 404 C172 364 126 373 101 418 C146 438 188 429 218 404Z"/>
-          <path class="draw" pathLength="1" style="--line-color:#4f7951;--fill-color:#6e9c65;--duration:2.2s;--delay:.8s" d="M222 358 C268 321 316 330 341 375 C294 395 251 386 222 358Z"/>
-          <path class="draw" pathLength="1" style="--line-color:#b12f4e;--fill-color:#d94b67;--duration:2.8s;--delay:.45s" d="M298 177 C240 159 217 105 250 62 C278 27 342 32 365 75 C390 123 350 164 298 177Z"/>
-          <path class="draw" pathLength="1" style="--line-color:#c43b59;--fill-color:#f0798f;--duration:2.45s;--delay:.75s" d="M292 162 C251 143 241 105 265 78 C288 51 334 60 346 92 C361 128 329 157 292 162Z"/>
-          <path class="draw" pathLength="1" style="--line-color:#a62847;--fill-color:#bd3554;--duration:2.2s;--delay:1s" d="M294 148 C274 130 273 101 290 88 C309 72 336 89 333 112 C329 137 312 145 294 148Z"/>
-          <path class="draw" pathLength="1" style="--line-color:#c64260;--fill-color:#ea607c;--duration:2.3s;--delay:.85s" d="M252 76 C217 76 194 102 199 136 C204 169 242 184 277 168 C249 145 243 111 252 76Z"/>
-          <path class="draw" pathLength="1" style="--line-color:#b73151;--fill-color:#cf4563;--duration:2.4s;--delay:1.1s" d="M356 77 C384 92 397 123 383 151 C366 184 328 187 299 171 C330 153 349 121 356 77Z"/>
-          <path class="draw" pathLength="1" style="--line-color:#4f7951;--fill-color:#6e9c65;--duration:1.8s;--delay:1.45s" d="M292 177 C274 191 261 210 253 233 C290 228 316 206 320 178Z"/>
-        </svg>
+        <img class="rose-art" src="assets/rose-realistic.png" alt="Bông hồng màu hồng đang nở" width="1024" height="1536">
       </button>
       <p class="tap-hint">Chạm vào bông hoa <small>một điều bất ngờ đang chờ em</small></p>
     </div>
